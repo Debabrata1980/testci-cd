@@ -5,7 +5,7 @@ Resources:
   UserTest:
     Type: AWS::Transfer::User
     Properties:
-      ServerId: s-8e3d46b512f94e12b
+      ServerId: s-73a1358d609b43d99
       UserName: testuser1
       HomeDirectoryMappings:
       - Entry: "/"

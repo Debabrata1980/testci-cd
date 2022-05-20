@@ -1,0 +1,13 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: sftp user creation
+
+Resources:
+  Mystack:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: nested1.yaml
+Outputs:
+   Stackrf:
+     Value: !Ref Mystack
+   OutputFromNestedStack:
+     Value: !GetAtt Mystack.Outputs.Username

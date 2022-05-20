@@ -5,7 +5,7 @@ Resources:
   Mystack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: nested1.yaml
+      TemplateURL: nested1.template
 Outputs:
    Stackrf:
      Value: !Ref Mystack

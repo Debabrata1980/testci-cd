@@ -20,4 +20,4 @@ jobs:
       uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
       with:
         name: RootStack
-        template: root_stack.yml
+        template: user_template.yaml

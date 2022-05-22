@@ -9,13 +9,17 @@ on:
       template:
         description: 'CloudFormation template file'
         required: true
+        type: string
       region:
         description: 'AWS region to use in the aws cli'
         required: true
         default: 'ap-south-1'
+        type: string
       bucket:
         description: 'Bucket where the package will be created'
-        required: true
+        required: true        
+        type: string
+        
 
   
 

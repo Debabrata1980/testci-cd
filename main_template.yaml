@@ -2,7 +2,7 @@ AWSTemplateFormatVersion: '2010-09-09'
 Description: sftp user creation
 
 Resources:
-  Mystack:
+  RootRole:
     Type: AWS::CloudFormation::Stack
     Properties:
       TemplateURL: nested.yaml

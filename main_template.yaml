@@ -5,9 +5,9 @@ Resources:
   Mystack:
     Type: AWS::CloudFormation::Stack
     Properties:
-      TemplateURL: nested1.yaml
+      TemplateURL: nested.yaml
 Outputs:
    Stackrf:
-     Value: !Ref Mystack
+     Value: !Ref RootRole
    OutputFromNestedStack:
-     Value: !GetAtt Mystack.Outputs.Username
+     Value: !GetAtt RootRole.Outputs.RoleName

@@ -4,22 +4,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ dev ]
-  workflow_call:
-    inputs:
-      template:
-        description: 'CloudFormation template file'
-        required: true
-        type: string
-      region:
-        description: 'AWS region to use in the aws cli'
-        required: true
-        default: 'ap-south-1'
-        type: string
-      bucket:
-        description: 'Bucket where the package will be created'
-        required: true        
-        type: string
-        
+   
 
   
 
@@ -36,7 +21,7 @@ jobs:
         aws-region: 'ap-south-1'
     - name: Upload files to S3 with AWS CLI
       run:  
-       aws cloudformation package --template-file ${{ inputs.template }} --s3-bucket ${{ inputs.bucket }} --output-template-file ${{ inputs.template }}
+       aws cloudformation package --template-file main_template.yaml --s3-bucket buck5tr --output-template-file main_template.yaml
  
     - name: Deploy CloudFormation Stack
       uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3

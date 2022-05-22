@@ -28,7 +28,7 @@ jobs:
       with:
         name: RootStack
         template: main_template.yaml
-        iam-capabilities: capabilities
+        iam-capabilities: CAPABILITY_NAMED_IAM
         
 
 

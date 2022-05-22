@@ -25,7 +25,7 @@ jobs:
  
     - name: Deploy CloudFormation Stack
       run:
-       aws cloudformation deploy --template-file main_template.yaml --stack-name RootStack --iam-capabilities CAPABILITY_IAM
+       aws cloudformation deploy --template-file main_template.yaml --stack-name RootStack --capabilities CAPABILITY_IAM
 #      uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
 #      with:
 #        name: RootStack

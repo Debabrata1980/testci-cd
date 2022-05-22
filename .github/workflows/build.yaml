@@ -24,11 +24,13 @@ jobs:
        aws cloudformation package --template-file main_template.yaml --s3-bucket buck5tr --output-template-file main_template.yaml
  
     - name: Deploy CloudFormation Stack
-      uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
-      with:
-        name: RootStack
-        template: main_template.yaml
-        iam-capabilities: CAPABILITY_IAM
+      run:
+       aws cloudformation deploy --template-file main_template.yaml --stack-name RootStack --iam-capabilities CAPABILITY_IAM
+#      uses: aws-actions/aws-cloudformation-github-deploy@v1.0.3
+#      with:
+#        name: RootStack
+#        template: main_template.yaml
+#        iam-capabilities: CAPABILITY_IAM
         
 
 

@@ -13,9 +13,9 @@ name: Python application
 
 on:
   push:
-    branches: [ "master", "dev","pytest" ]
-  pull_request:
-    branches: [ "master" ]
+    branches: [ "master", "dev","pytest","pytest_upd" ]
+#  pull_request:
+#    branches: [ "master" ]
 
 
 permissions:
@@ -48,7 +48,7 @@ jobs:
     - name: check the file in specific folder and Test with unittest
       run: |
            chmod +x testrun.sh
-           ./testrun.sh /tests #${{ inputs.python-folder }}
+           ./testrun.sh ./tests #${{ inputs.python-folder }}
       shell: bash    
 
 #        python  *.py 

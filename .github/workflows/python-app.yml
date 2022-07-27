@@ -38,4 +38,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pytest
       run: |
-        pytest my_fib.py
+        for python_file in ${python_folder}/*.py; do
+        python -m unittest ${python_file} 
+        #pytest my_fib.py

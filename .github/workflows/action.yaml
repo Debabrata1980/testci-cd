@@ -5,11 +5,11 @@
 
 name: Python application
 
-inputs:
-  python-folder:
-    description: Folder containing the python files.
-    required: false
-    default: './'
+  #inputs:
+  #  python-folder:
+  #  description: Folder containing the python files.
+  #  required: false
+  #  default: './'
 
 on:
   push:
@@ -39,16 +39,16 @@ jobs:
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-#    - name: Lint with flake8
-#      run: |
-#        # stop the build if there are Python syntax errors or undefined names
-#        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-#        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-#        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Lint with flake8
+      run: |
+        # stop the build if there are Python syntax errors or undefined names
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: check the file in specific folder and Test with unittest
       run: |
            chmod +x testrun.sh
-           ./testrun.sh ${{ inputs.python-folder }}
+           ./testrun.sh /tests #${{ inputs.python-folder }}
       shell: bash    
 
 #        python  *.py 

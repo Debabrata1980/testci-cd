@@ -26,7 +26,7 @@ fi
 echo -e "\nExecuting unit tests..."
 found_errors=0
 for python_file in ${python_folder}/*.py; do
-  python -m unittest ${python_file}
+  python  ${python_file}
   if [ $? -ne 0 ]; then
     found_errors=1
   fi

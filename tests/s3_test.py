@@ -1,6 +1,6 @@
 import boto3
 from moto import mock_s3
-from tests/mymodule import MyModel
+from tests.mymodule import MyModel
 
 
 @mock_s3

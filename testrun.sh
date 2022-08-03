@@ -34,5 +34,6 @@ for python_file in ${python_folder}/*.py; do
 done
 # Exit if there are any errors 
 if [ ${found_errors} -ne 0 ]; then
+	echo "found_error :" ${found_errors}
   exit 1
 fi

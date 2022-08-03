@@ -11,3 +11,5 @@ def test_my_model_save():
     model_instance.save()
     body = conn.Object('mybucket', 'steve').get()['Body'].read().decode("utf-8")
     assert body == 'is awesome'
+
+

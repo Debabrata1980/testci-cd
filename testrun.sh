@@ -1,4 +1,4 @@
-i#!/bin/sh
+#!/bin/sh
 
 # First argument is the folder containing the python code (default to current folder).
 python_folder="."

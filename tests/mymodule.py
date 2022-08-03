@@ -1,5 +1,6 @@
 import boto3
 
+
 class MyModel(object):
     def __init__(self, name, value):
         self.name = name

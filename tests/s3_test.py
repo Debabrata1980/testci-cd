@@ -3,7 +3,6 @@ from moto import mock_s3
 from mymodule import MyModel
 
 
-
 @mock_s3
 def test_my_model_save():
     conn = boto3.resource('s3', region_name='us-east-1')

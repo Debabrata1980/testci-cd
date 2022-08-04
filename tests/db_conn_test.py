@@ -32,7 +32,7 @@ class TestConnection(unittest.TestCase):
         # self.assertRaises(ClientError, db_conn.db_conn)
 
 # Happy scenario always pass
-    @patch('db_conn.get_data')
+    @patch('db_conn.db_conn')
     def test_db_conn(self, mock_db):
       mock_db.return_value.query_all_data.return_value = 'result data'
       result = get_data()

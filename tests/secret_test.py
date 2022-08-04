@@ -1,8 +1,8 @@
 from datetime import datetime
 import boto3
 from moto import mock_secretsmanager
-#from botocore.exceptions import ClientError
-#import pytest
+#   from botocore.exceptions import ClientError
+#   import pytest
 from dateutil.tz import tzlocal
 
 
@@ -40,7 +40,7 @@ def test_list_secrets():
     assert secrets["SecretList"][1]["CreatedDate"] <= datetime.now(tz=tzlocal())
     assert secrets["SecretList"][0]["LastChangedDate"] <= datetime.now(tz=tzlocal())
     assert secrets["SecretList"][1]["LastChangedDate"] <= datetime.now(tz=tzlocal())
-    
+
 
 @mock_secretsmanager
 def test_get_secret_value():
@@ -48,4 +48,3 @@ def test_get_secret_value():
     conn.create_secret(Name="java-util-test-password", SecretString="foosecret")
     result = conn.get_secret_value(SecretId="java-util-test-password")
     assert result["SecretString"] == "foosecret"
-    

@@ -7,7 +7,7 @@ import unittest
 # from botocore.exceptions import ClientError
 # import botocore.session
 # from aws_secretsmanager_caching import SecretCache, SecretCacheConfig
-from db_conn import get_data
+from db_conn import *
 from unittest.mock import patch
 
 

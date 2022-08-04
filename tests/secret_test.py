@@ -1,8 +1,9 @@
 from datetime import datetime
 import boto3
 from moto import mock_secretsmanager
-from botocore.exceptions import ClientError
-import pytest
+#from botocore.exceptions import ClientError
+#import pytest
+from dateutil.tz import tzlocal
 
 
 def boto_client():
@@ -12,9 +13,7 @@ def boto_client():
 @mock_secretsmanager
 def test_empty():
     conn = boto_client()
-
     secrets = conn.list_secrets()
-    
     print(secrets)
     assert secrets["SecretList"] == []
 
@@ -22,19 +21,14 @@ def test_empty():
 @mock_secretsmanager
 def test_list_secrets():
     conn = boto_client()
-
     conn.create_secret(Name="test-secret", SecretString="foosecret")
-
     conn.create_secret(
         Name="test-secret-2",
         SecretString="barsecret",
         Tags=[{"Key": "a", "Value": "1"}],
     )
-
     secrets = conn.list_secrets()
-    
     print(secrets)
-
     assert secrets["SecretList"][0]["ARN"] is not None
     assert secrets["SecretList"][0]["Name"] == "test-secret"
     assert secrets["SecretList"][0]["SecretVersionsToStages"] is not None
@@ -54,3 +48,4 @@ def test_get_secret_value():
     conn.create_secret(Name="java-util-test-password", SecretString="foosecret")
     result = conn.get_secret_value(SecretId="java-util-test-password")
     assert result["SecretString"] == "foosecret"
+    

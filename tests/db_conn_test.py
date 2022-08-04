@@ -20,7 +20,7 @@ class TestConnection(unittest.TestCase):
     # cache_config = SecretCacheConfig()
     # cache = SecretCache(config=cache_config, client=sm_client)
     # secret = cache.get_secret_string('MySecret')
-    # dict_secret = json.loads(secret)     
+    # dict_secret = json.loads(secret)
     # def test_db_conn_params(self):
         # pg_credential = json.loads(self.sm_client.get_secret_value(SecretId=self.RDS)['SecretString'])
         # self.assertEqual(pg_credential.get('host'),dict_secret['host'])
@@ -31,7 +31,7 @@ class TestConnection(unittest.TestCase):
     # def test_db_conn_exception(self):
         # self.assertRaises(ClientError, db_conn.db_conn)
 
-# Happy scenario always pass    
+# Happy scenario always pass
     @patch('db_conn.db_conn')
     def test_db_conn(self, mock_db):
       mock_db.return_value.query_all_data.return_value = 'result data'
@@ -39,6 +39,7 @@ class TestConnection(unittest.TestCase):
       self.assertEqual(result, 'result data')
       self.assertEqual(mock_db.call_count, '1')
       self.assertEqual(mock_db.query_all_data.call_count, 1)
+
 
 if __name__ == '__main__':
     unittest.main()

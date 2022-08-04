@@ -1,6 +1,6 @@
 from datetime import datetime
 import boto3
-#from moto import mock_secretsmanager
+#   from moto import mock_secretsmanager
 #   from botocore.exceptions import ClientError
 #   import pytest
 from dateutil.tz import tzlocal
@@ -10,7 +10,7 @@ def boto_client():
     return boto3.client("secretsmanager", region_name="us-west-2")
 
 
-#@mock_secretsmanager
+#   @mock_secretsmanager
 def test_empty():
     conn = boto_client()
     secrets = conn.list_secrets()
@@ -18,7 +18,7 @@ def test_empty():
     assert secrets["SecretList"] == []
 
 
-#@mock_secretsmanager
+#   @mock_secretsmanager
 def test_list_secrets():
     conn = boto_client()
     conn.create_secret(Name="test-secret", SecretString="foosecret")
@@ -42,7 +42,7 @@ def test_list_secrets():
     assert secrets["SecretList"][1]["LastChangedDate"] <= datetime.now(tz=tzlocal())
 
 
-#@mock_secretsmanager
+#   @mock_secretsmanager
 def test_get_secret_value():
     conn = boto3.client("secretsmanager", region_name="us-west-2")
     conn.create_secret(Name="java-util-test-password", SecretString="foosecret")

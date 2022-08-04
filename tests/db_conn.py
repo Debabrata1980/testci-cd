@@ -28,11 +28,12 @@ def db_conn():
 def get_date():
         dbconn = db_conn()
 #       print(pg_credential)
-        cur = dbconn.cursor()
-        cur.execute('SELECT 1')
-        a = cur.fetchone()[0]
-        print('print the records returned after database connection', a)
-        return a
+#        cur = dbconn.cursor()
+#        cur.execute('SELECT 1')
+#        a = cur.fetchone()[0]
+        result = dbconn.query_all_data()
+#        print('print the records returned after database connection', a)
+        return result
 
 
 if __name__ == "__main__":

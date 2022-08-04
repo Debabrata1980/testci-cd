@@ -25,17 +25,20 @@ fi
 # Execute unit tests
 echo -e "\nExecuting unit tests..."
 found_errors=0
-for python_file in ${python_folder}/*.py; do
-  echo "File Name "  ${python_file}
-  pytest  ${python_file}
+
+pytest  db_conn_test.py
+# for python_file in ${python_folder}/*.py; do
+  # echo "File Name "  ${python_file}
+#   pytest  ${python_file}
+
   
-  echo "found error "  ${found_errors} 
-  if [ $? -ne 0 ]; then
-    found_errors+=1
-	echo "found error "  ${found_errors}   
+  # echo "found error "  ${found_errors} 
+  # if [ $? -ne 0 ]; then
+    # found_errors+=1
+	# echo "found error "  ${found_errors}   
 	
-  fi
-done
+  # fi
+# done
 # Exit if there are any errors 
 if [ ${found_errors} -ne 0 ]; then
 	echo "found_error :" ${found_errors}

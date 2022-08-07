@@ -43,5 +43,5 @@ def test_start_database():
     mydb = conn.describe_db_instances(
         DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
     )["DBInstances"][0]
-    mydb["DBInstanceStatus"].should.equal("available")
     print(mydb)
+    mydb["DBInstanceStatus"].should.equal("available")

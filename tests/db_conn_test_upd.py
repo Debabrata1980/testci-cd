@@ -20,7 +20,7 @@ class TestConnection(unittest.TestCase):
     result = conn.get_secret_value(SecretId=os.environ['RDS'])
     assert result["SecretString"] == "foosecret"
 
-    
+
 # Happy scenario always pass
 #    @patch("db_conn.db_conn")
 #    def test_db_conn(self, mock_db):

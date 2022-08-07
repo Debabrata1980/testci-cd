@@ -44,3 +44,4 @@ def test_start_database():
         DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
     )["DBInstances"][0]
     mydb["DBInstanceStatus"].should.equal("available")
+    pprint(mydb)

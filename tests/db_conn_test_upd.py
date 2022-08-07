@@ -24,3 +24,23 @@ def test_get_secret_value():
     result = conn.get_secret_value(SecretId=os.environ.get('RDS'))
     assert result["SecretString"] == "foosecret"
 
+
+@mock_rds
+def test_start_database():
+    conn = boto3.client("rds", region_name="us-west-2")
+    database = conn.create_db_instance(
+        DBInstanceIdentifier="db-master-1",
+        AllocatedStorage=10,
+        Engine="postgres",
+        DBName="staging-postgres",
+        DBInstanceClass="db.m1.small",
+        LicenseModel="license-included",
+        MasterUsername="root",
+        MasterUserPassword="hunter2",
+        Port=1234,
+        DBSecurityGroups=["my_sg"],
+    )
+    mydb = conn.describe_db_instances(
+        DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
+    )["DBInstances"][0]
+    mydb["DBInstanceStatus"].should.equal("available")

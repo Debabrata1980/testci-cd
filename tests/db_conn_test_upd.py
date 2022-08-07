@@ -12,6 +12,7 @@ import os
 # import src.db_conn
 # from unittest.mock import patch
 from moto import mock_secretsmanager,mock_rds
+import sure
 
 
 @mock_secretsmanager
@@ -44,4 +45,4 @@ def test_start_database():
         DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
     )["DBInstances"][0]
     print(mydb)
-    mydb["DBInstanceStatus"].equal("available")
+    mydb["DBInstanceStatus"].should.equal("available")

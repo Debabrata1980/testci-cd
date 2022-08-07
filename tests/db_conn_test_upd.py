@@ -20,8 +20,8 @@ class TestConnection(unittest.TestCase):
     os.environ['RDS'] = "stellarbi/rds"
     print(os.environ.get('RDS'))
     client = boto3.client("secretsmanager", region_name="us-west-2")
-    client.create_secret(Name=os.environ.get('RDS'), SecretString="foosecret")
-    result = client.get_secret_value(SecretId=os.environ.get('RDS'))
+    client.create_secret(Name="stellarbi/rds", SecretString="foosecret")
+    result = client.get_secret_value(SecretId="stellarbi/rds")
     assert result["SecretString"] == "foosecret"
 
 

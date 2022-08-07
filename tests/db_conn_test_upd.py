@@ -1,6 +1,6 @@
 # import unittest
 import boto3
-# import os
+import os
 # import json
 # import psycopg2
 # import db_conn

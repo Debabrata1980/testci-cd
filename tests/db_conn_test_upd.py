@@ -12,7 +12,7 @@ import os
 # import src.db_conn
 # from unittest.mock import patch
 
-
+@mock_secretsmanager
 class TestConnection(unittest.TestCase):
 
     os.environ['RDS'] = 'stellarbi/rds'

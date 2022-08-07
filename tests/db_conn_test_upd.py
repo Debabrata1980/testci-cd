@@ -11,7 +11,7 @@ import os
 # import mock_rds
 # import src.db_conn
 # from unittest.mock import patch
-from moto import mock_secretsmanager
+from moto import mock_secretsmanager,mock_rds
 
 
 @mock_secretsmanager

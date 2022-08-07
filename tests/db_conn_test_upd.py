@@ -17,7 +17,7 @@ from moto import mock_secretsmanager
 @mock_secretsmanager
 def test_get_secret_value():
 
-    os.environ['RDS']= 'stellarbi/rds'
+    os.environ['RDS']='stellarbi/rds'
     conn = boto3.client("secretsmanager", region_name="us-west-2")
 
     conn.create_secret(Name=os.environ.get('RDS'), SecretString="foosecret")

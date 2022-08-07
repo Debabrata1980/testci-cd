@@ -12,7 +12,7 @@ import os
 # import src.db_conn
 # from unittest.mock import patch
 from moto import mock_secretsmanager,mock_rds
-import sure # noqa
+import sure # noqa # pylint: disable=unused-import
 
 
 @mock_secretsmanager

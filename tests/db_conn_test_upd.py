@@ -15,24 +15,10 @@ from moto import mock_secretsmanager
 
 
 @mock_secretsmanager
-class TestConnection(unittest.TestCase):
+def test_get_secret_value():
+    conn = boto3.client("secretsmanager", region_name="us-west-2")
 
-    os.environ['RDS'] = "stellarbi-rds"
-    print(os.environ.get('RDS'))
-    client = boto3.client("secretsmanager", region_name="us-west-2")
-    client.create_secret(Name="stellarbi-rds", SecretString="foosecret")
-    result = client.get_secret_value(SecretId="stellarbi-rds")
+    conn.create_secret(Name="java-util-test-password", SecretString="foosecret")
+    result = conn.get_secret_value(SecretId="java-util-test-password")
     assert result["SecretString"] == "foosecret"
 
-
-# Happy scenario always pass
-#    @patch("db_conn.db_conn")
-#    def test_db_conn(self, mock_db):
-#      mock_db.return_value.query_all_data.return_value = 'result data'
-#      result = get_data()
-#      self.assertEqual(result, 'result data')
-#      self.assertEqual(mock_db.call_count, '1')
-#      self.assertEqual(mock_db.query_all_data.call_count, 1)
-
-if __name__ == '__main__':
-    unittest.main()

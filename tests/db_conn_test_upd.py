@@ -14,7 +14,7 @@ import os
 
 
 class TestConnection(unittest.TestCase):
-    
+
     os.environ['RDS'] = 'stellarbi/rds'
     conn = boto3.client("secretsmanager", region_name="us-west-2")
     conn.create_secret(Name=os.environ['RDS'], SecretString="foosecret")

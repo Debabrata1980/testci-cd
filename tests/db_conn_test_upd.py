@@ -9,8 +9,8 @@ import os
 # import botocore.session
 # from aws_secretsmanager_caching import SecretCache, SecretCacheConfig
 # import mock_rds
-import src.db_conn
-from unittest.mock import patch
+# import src.db_conn
+# from unittest.mock import patch
 
 
 class TestConnection(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestConnection(unittest.TestCase):
     conn.create_secret(Name=os.environ['RDS'], SecretString="foosecret")
     result = conn.get_secret_value(SecretId=os.environ['RDS'])
     assert result["SecretString"] == "foosecret"
-    
+
     
 # Happy scenario always pass
 #    @patch("db_conn.db_conn")

@@ -102,16 +102,16 @@ class MyUnitTest(unittest.TestCase):
               )
              """)
          
-         response = conn.stop_db_instance(
-            DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
-            DBSnapshotIdentifier="rocky4570-rds-snap",
-           )
-          response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
+             response = conn.stop_db_instance(
+                DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
+                DBSnapshotIdentifier="rocky4570-rds-snap",
+               )
+             response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
 
-         conn.delete_db_instance(
-            DBInstanceIdentifier="db-master-1",
-            FinalDBSnapshotIdentifier="primary-1-snapshot",
-          )
+             conn.delete_db_instance(
+                DBInstanceIdentifier="db-master-1",
+                FinalDBSnapshotIdentifier="primary-1-snapshot",
+              )
 
 
 if __name__ == '__main__':

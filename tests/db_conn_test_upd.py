@@ -56,17 +56,17 @@ class MyUnitTest(unittest.TestCase):
             Port="5432",
             DBSecurityGroups=["my_sg"],
         )
-
-        mydb = conn.describe_db_instances(
-            DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
-        )["DBInstances"][0]
-        print(mydb)
-        mydb["DBInstanceStatus"].should.equal("available")
+        
+         mydb = conn.describe_db_instances(
+              DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
+          )["DBInstances"][0]
+         print(mydb)
+         mydb["DBInstanceStatus"].should.equal("available")
 
     #    connection = db_conn()   # How I will check to connect to the database I have created by this function of db_conn
     
-        """ create tables in the PostgreSQL database"""
-        commands = (
+         """ create tables in the PostgreSQL database"""
+         commands = (
             """
             CREATE TABLE vendors (
                 vendor_id SERIAL PRIMARY KEY,
@@ -99,33 +99,33 @@ class MyUnitTest(unittest.TestCase):
                     FOREIGN KEY (part_id)
                         REFERENCES parts (part_id)
                         ON UPDATE CASCADE ON DELETE CASCADE
-            )
-            """
-        connection = psycopg2.connect(host=pg_credential.get('host'),
+              )
+             """
+         connection = psycopg2.connect(host=pg_credential.get('host'),
                             port=pg_credential.get('port'),
                             user=pg_credential.get('username'),
                             password=pg_credential.get('password'),
                             database=pg_credential.get('dbname')
 
-        cur = connection.cursor()
+         cur = connection.cursor()
         # create table one by one
-        for command in commands:
+         for command in commands:
             cur.execute(command)
         # close communication with the PostgreSQL database server
-        cur.close()
+         cur.close()
         # commit the changes
-        connection.commit()
+         connection.commit()
 
-       response = conn.stop_db_instance(
+         response = conn.stop_db_instance(
             DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
             DBSnapshotIdentifier="rocky4570-rds-snap",
-        )
-        response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
+          )
+         response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
 
-        conn.delete_db_instance(
+         conn.delete_db_instance(
             DBInstanceIdentifier="db-master-1",
             FinalDBSnapshotIdentifier="primary-1-snapshot",
-        )
+          )
 
 
 if __name__ == '__main__':

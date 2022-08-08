@@ -1,6 +1,7 @@
 # import unittest
 import boto3
 import os
+import unittest
 # import json
 # import psycopg2
 # import db_conn
@@ -13,7 +14,7 @@ import os
 # from unittest.mock import patch
 from moto import mock_secretsmanager,mock_rds
 import sure # noqa # pylint: disable=unused-import
-#import src.db_conn
+# import src.db_conn
 
 
 class MyUnitTest(unittest.TestCase):
@@ -25,7 +26,6 @@ class MyUnitTest(unittest.TestCase):
         conn.create_secret(Name=os.environ.get('RDS'), SecretString="foosecret")
         result = conn.get_secret_value(SecretId=os.environ.get('RDS'))
         assert result["SecretString"] == "foosecret"
-
 
     @mock_rds
     def test_start_database(self):

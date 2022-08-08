@@ -47,17 +47,12 @@ def test_start_database():
     print(mydb)
     mydb["DBInstanceStatus"].should.equal("available")
 
-
-def test_stop_database():
-
     response = conn.stop_db_instance(
         DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
         DBSnapshotIdentifier="rocky4570-rds-snap",
     )
     response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
 
-
-def test_delete_database():  
     conn.delete_db_instance(
         DBInstanceIdentifier="db-master-1",
         FinalDBSnapshotIdentifier="primary-1-snapshot",

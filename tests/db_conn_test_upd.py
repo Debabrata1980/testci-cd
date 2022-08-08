@@ -53,7 +53,7 @@ class MyUnitTest(unittest.TestCase):
             LicenseModel="license-included",
             MasterUsername="test-db-user",
             MasterUserPassword="test1234",
-            Port="5432",
+            Port=5432,
             DBSecurityGroups=["my_sg"]
         )
 

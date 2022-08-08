@@ -102,22 +102,22 @@ class MyUnitTest(unittest.TestCase):
               )
              """)
              """         
-         host = db_instance['Endpoint']['Address']
+            host = db_instance['Endpoint']['Address']
 
-         connection = psycopg2.connect(host=pg_credential.get('host'),
+            connection = psycopg2.connect(host=pg_credential.get('host'),
                             port=pg_credential.get('port'),
                             user=pg_credential.get('username'),
                             password=pg_credential.get('password'),
                             database=pg_credential.get('dbname'))
 
-         cur = connection.cursor()
-        # create table one by one
-         for command in commands:
-            cur.execute(command)
-        # close communication with the PostgreSQL database server
-         cur.close()
-        # commit the changes
-         connection.commit()
+             cur = connection.cursor()
+            # create table one by one
+             for command in commands:
+                cur.execute(command)
+            # close communication with the PostgreSQL database server
+             cur.close()
+            # commit the changes
+             connection.commit()
             """
          
          response = conn.stop_db_instance(

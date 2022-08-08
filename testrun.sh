@@ -33,6 +33,7 @@ found_errors=0
 
 for python_file in ${python_folder}/*.py; do
   echo "File Name "  ${python_file}
+  cd ./
   pytest  ${python_file}
 
   

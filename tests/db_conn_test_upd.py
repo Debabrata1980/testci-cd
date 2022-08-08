@@ -83,7 +83,7 @@ class MyUnitTest(unittest.TestCase):
             CREATE TABLE part_drawings (
                     part_id INTEGER PRIMARY KEY,
                     file_extension VARCHAR(5) NOT NULL,
-                    drawing_data BYTEA NOT NULL,
+                    drawing_data BYTEA NOT NULL
                     FOREIGN KEY (part_id)
                     REFERENCES parts (part_id)
                     ON UPDATE CASCADE ON DELETE CASCADE
@@ -92,7 +92,7 @@ class MyUnitTest(unittest.TestCase):
             """
             CREATE TABLE vendor_parts (
                     vendor_id INTEGER NOT NULL,
-                    part_id INTEGER NOT NULL,
+                    part_id INTEGER NOT NULL
                     PRIMARY KEY (vendor_id , part_id),
                     FOREIGN KEY (vendor_id)
                         REFERENCES vendors (vendor_id)

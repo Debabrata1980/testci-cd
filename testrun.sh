@@ -15,7 +15,7 @@ ls ${python_folder}/*.py
 
 # Run python linting. Ignoring E501 (line too long)
 echo -e "\nLinting python files..."
-flake8 --ignore=E1,E23,W503,E226,W391,E501 ${python_folder}
+flake8 --ignore=E1,E23,W503,E226,W391,E501 --exclude ${python_folder}
 resp=$?
 # Exit if there are any errors 
 if [ ${resp} -ne 0 ]; then

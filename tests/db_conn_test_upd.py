@@ -61,3 +61,7 @@ class MyUnitTest(unittest.TestCase):
             DBInstanceIdentifier="db-master-1",
             FinalDBSnapshotIdentifier="primary-1-snapshot",
         )
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -101,7 +101,7 @@ class MyUnitTest(unittest.TestCase):
                         REFERENCES parts (part_id)
                         ON UPDATE CASCADE ON DELETE CASCADE
               )
-             """
+             """)
          connection = psycopg2.connect(host=pg_credential.get('host'),
                             port=pg_credential.get('port'),
                             user=pg_credential.get('username'),

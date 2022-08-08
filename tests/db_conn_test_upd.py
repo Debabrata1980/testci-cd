@@ -103,7 +103,24 @@ class MyUnitTest(unittest.TestCase):
                         ON UPDATE CASCADE ON DELETE CASCADE
               )
              """)
-         
+
+            host = mydb["Endpoint"]["Address"]
+
+            connection = psycopg2.connect(host=host,
+                            port=5432,
+                            user="test-db-user",
+                            password="test1234",
+                            database="test")
+
+             cur = connection.cursor()
+            # create table one by one
+             for command in commands:
+                cur.execute(command)
+            # close communication with the PostgreSQL database server
+             cur.close()
+            # commit the changes
+             connection.commit()
+             
          response = conn.stop_db_instance(
             DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
             DBSnapshotIdentifier="rocky4570-rds-snap",

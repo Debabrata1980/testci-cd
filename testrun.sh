@@ -43,7 +43,7 @@ found_errors=0
 	echo "found error "  ${found_errors}   
 	
   fi
-done
+#done
 # Exit if there are any errors 
 if [ ${found_errors} -ne 0 ]; then
 	echo "found_error :" ${found_errors}

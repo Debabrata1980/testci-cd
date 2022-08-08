@@ -60,7 +60,9 @@ class MyUnitTest(unittest.TestCase):
          mydb = conn.describe_db_instances(
               DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
           )["DBInstances"][0]
+         
          print(mydb)
+
          mydb["DBInstanceStatus"].should.equal("available")
 
     #    connection = db_conn()   # How I will check to connect to the database I have created by this function of db_conn

@@ -54,7 +54,7 @@ class MyUnitTest(unittest.TestCase):
             MasterUsername="test-db-user",
             MasterUserPassword="test1234",
             Port="5432",
-            DBSecurityGroups=["my_sg"],
+            DBSecurityGroups=["my_sg"]
         )
         
          mydb = conn.describe_db_instances(
@@ -73,7 +73,8 @@ class MyUnitTest(unittest.TestCase):
                 vendor_name VARCHAR(255) NOT NULL
             )
             """,
-            """ CREATE TABLE parts (
+            """ 
+            CREATE TABLE parts (
                     part_id SERIAL PRIMARY KEY,
                     part_name VARCHAR(255) NOT NULL
                     )

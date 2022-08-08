@@ -104,22 +104,22 @@ class MyUnitTest(unittest.TestCase):
               )
              """)
 
-            host = mydb["Endpoint"]["Address"]
+         host = mydb["Endpoint"]["Address"]
 
-            connection = psycopg2.connect(host=host,
+         connection = psycopg2.connect(host=host,
                             port=5432,
                             user="test-db-user",
                             password="test1234",
                             database="test")
 
-             cur = connection.cursor()
+         cur = connection.cursor()
             # create table one by one
-             for command in commands:
+         for command in commands:
                 cur.execute(command)
             # close communication with the PostgreSQL database server
-             cur.close()
+         cur.close()
             # commit the changes
-             connection.commit()
+         connection.commit()
              
          response = conn.stop_db_instance(
             DBInstanceIdentifier=mydb["DBInstanceIdentifier"],

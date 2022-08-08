@@ -107,7 +107,7 @@ class MyUnitTest(unittest.TestCase):
                             port=pg_credential.get('port'),
                             user=pg_credential.get('username'),
                             password=pg_credential.get('password'),
-                            database=pg_credential.get('dbname')
+                            database=pg_credential.get('dbname'))
 
          cur = connection.cursor()
         # create table one by one

@@ -56,7 +56,7 @@ class MyUnitTest(unittest.TestCase):
             Port="5432",
             DBSecurityGroups=["my_sg"]
         )
-        
+
          mydb = conn.describe_db_instances(
               DBInstanceIdentifier=database["DBInstance"]["DBInstanceIdentifier"]
           )["DBInstances"][0]
@@ -64,7 +64,6 @@ class MyUnitTest(unittest.TestCase):
          mydb["DBInstanceStatus"].should.equal("available")
 
     #    connection = db_conn()   # How I will check to connect to the database I have created by this function of db_conn
-    
          """ create tables in the PostgreSQL database"""
          commands = (
             """
@@ -77,7 +76,7 @@ class MyUnitTest(unittest.TestCase):
             CREATE TABLE parts (
                     part_id SERIAL PRIMARY KEY,
                     part_name VARCHAR(255) NOT NULL
-                    )
+            )
             """,
             """
             CREATE TABLE part_drawings (
@@ -102,7 +101,9 @@ class MyUnitTest(unittest.TestCase):
                         ON UPDATE CASCADE ON DELETE CASCADE
               )
              """)
-             
+"""         
+         host = db_instance['Endpoint']['Address']
+
          connection = psycopg2.connect(host=pg_credential.get('host'),
                             port=pg_credential.get('port'),
                             user=pg_credential.get('username'),
@@ -117,7 +118,7 @@ class MyUnitTest(unittest.TestCase):
          cur.close()
         # commit the changes
          connection.commit()
-
+"""
          response = conn.stop_db_instance(
             DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
             DBSnapshotIdentifier="rocky4570-rds-snap",

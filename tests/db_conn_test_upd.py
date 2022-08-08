@@ -15,9 +15,9 @@ from moto import mock_secretsmanager,mock_rds
 import sure # noqa # pylint: disable=unused-import
 
 
+
 @mock_secretsmanager
 def test_get_secret_value():
-
     os.environ['RDS'] = 'stellarbi/rds'
     conn = boto3.client("secretsmanager", region_name="us-west-2")
 
@@ -28,17 +28,18 @@ def test_get_secret_value():
 
 @mock_rds
 def test_start_database():
+    from src.db_conn import pg_credential
     conn = boto3.client("rds", region_name="us-west-2")
     database = conn.create_db_instance(
         DBInstanceIdentifier="db-master-1",
         AllocatedStorage=10,
         Engine="postgres",
-        DBName="staging-postgres",
+        DBName=pg_credential.get('dbname'),
         DBInstanceClass="db.m1.small",
         LicenseModel="license-included",
-        MasterUsername="root",
-        MasterUserPassword="hunter2",
-        Port=1234,
+        MasterUsername=pg_credential.get['username'],
+        MasterUserPassword=pg_credential.get('password'),
+        Port=pg_credential.get('port'),
         DBSecurityGroups=["my_sg"],
     )
     mydb = conn.describe_db_instances(
@@ -47,6 +48,8 @@ def test_start_database():
     print(mydb)
     mydb["DBInstanceStatus"].should.equal("available")
 
+#    connection = db_conn()   # How I will check to connect to the database I have created by this function of db_conn
+    
     response = conn.stop_db_instance(
         DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
         DBSnapshotIdentifier="rocky4570-rds-snap",

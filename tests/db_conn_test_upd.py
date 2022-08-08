@@ -101,7 +101,7 @@ class MyUnitTest(unittest.TestCase):
                         ON UPDATE CASCADE ON DELETE CASCADE
               )
              """)
-"""         
+             """         
          host = db_instance['Endpoint']['Address']
 
          connection = psycopg2.connect(host=pg_credential.get('host'),
@@ -118,12 +118,13 @@ class MyUnitTest(unittest.TestCase):
          cur.close()
         # commit the changes
          connection.commit()
-"""
+            """
+         
          response = conn.stop_db_instance(
             DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
             DBSnapshotIdentifier="rocky4570-rds-snap",
-          )
-         response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
+           )
+          response["DBInstance"]["DBInstanceStatus"].should.equal("stopped")
 
          conn.delete_db_instance(
             DBInstanceIdentifier="db-master-1",

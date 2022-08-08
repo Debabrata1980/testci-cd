@@ -15,7 +15,6 @@ from moto import mock_secretsmanager,mock_rds
 import sure # noqa # pylint: disable=unused-import
 
 
-
 @mock_secretsmanager
 def test_get_secret_value():
     os.environ['RDS'] = 'stellarbi/rds'
@@ -49,7 +48,7 @@ def test_start_database():
     mydb["DBInstanceStatus"].should.equal("available")
 
 #    connection = db_conn()   # How I will check to connect to the database I have created by this function of db_conn
-    
+
     response = conn.stop_db_instance(
         DBInstanceIdentifier=mydb["DBInstanceIdentifier"],
         DBSnapshotIdentifier="rocky4570-rds-snap",

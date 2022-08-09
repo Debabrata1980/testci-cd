@@ -37,5 +37,7 @@ class MyUnitTest(unittest.TestCase):
             resp = client.get_object(Bucket=BUCKET_NAME, Key=FILE_NAME)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             print("Content-Length: {}".format(content_length))
-            
-            
+           
+           
+if __name__ == '__main__':
+    unittest.main()            

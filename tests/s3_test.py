@@ -7,9 +7,9 @@ import unittest
 
 class MyUnitTest(unittest.TestCase):
 
-        self.BUCKET_NAME = "mybucket"
-        self.FILE_NAME = "red.jpg"
-        self.FILE_LOCATION = FILE_NAME
+        BUCKET_NAME = "mybucket"
+        FILE_NAME = "red.jpg"
+        FILE_LOCATION = FILE_NAME
         
         @mock_s3
         def test_my_model_save(self):
@@ -26,7 +26,7 @@ class MyUnitTest(unittest.TestCase):
         def test_archive_s3(self):
 #            from src.schema_reader import _download_file
 #            from rollback import CErrorTypes, send_record_to_s3, archive
-        #    import json
+#            import json
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')

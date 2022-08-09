@@ -2,6 +2,7 @@ import boto3
 from moto import mock_s3
 from src.mymodule import MyModel
 from src import *
+import unittest
 
 
 class MyUnitTest(unittest.TestCase):

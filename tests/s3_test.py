@@ -28,20 +28,6 @@ class MyUnitTest(unittest.TestCase):
         #    import json
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=BUCKET_NAME)
-            data = {
-              "type": "com.hp.id.data.internal.profile_create.v1",
-              "id": "sdfgregfdgh54hyth56hrth56hrhtryj",
-              "data": {
-                  "profile": {
-                      "hpidId": "uniquehpid",
-                      "type": "consumer",
-                      "username": "email@domain.com",
-                      "usernameAlias": [
-                          "email@domain.com",
-                      ]
-                  }
-              }
-            }
             client = boto3.client('s3', region_name='us-east-1')
             with open(FILE_LOCATION, 'rb') as data:
                 client.upload_fileobj(data, BUCKET_NAME, FILE_NAME)

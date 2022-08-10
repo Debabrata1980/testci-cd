@@ -10,7 +10,7 @@ class MyUnitTest(unittest.TestCase):
         BUCKET_NAME = "mybucket"
         FILE_NAME = "db_tables"
         PATH = "./file_bkp"
-        FILE_LOCATION = f'{self.PATH}/{self.FILE_NAME}.json'
+        FILE_LOCATION = f'{PATH}/{FILE_NAME}.json'
         
         @mock_s3
         def test_my_model_save(self):

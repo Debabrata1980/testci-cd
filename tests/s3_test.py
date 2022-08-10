@@ -8,8 +8,9 @@ import unittest
 class MyUnitTest(unittest.TestCase):
 
         BUCKET_NAME = "mybucket"
-        FILE_NAME = "red.jpg"
-        FILE_LOCATION = FILE_NAME
+        FILE_NAME = "db_tables"
+        PATH = "./file_bkp"
+        FILE_LOCATION = f'{self.PATH}/{self.FILE_NAME}.json'
         
         @mock_s3
         def test_my_model_save(self):
@@ -30,6 +31,7 @@ class MyUnitTest(unittest.TestCase):
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')
+            print(FILE_LOCATION)
             with open(FILE_LOCATION, 'rb') as data:
                 client.upload_fileobj(data, self.BUCKET_NAME, FILE_NAME)
             

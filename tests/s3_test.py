@@ -41,6 +41,23 @@ class MyUnitTest(unittest.TestCase):
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             print("Content-Length: {}".format(content_length))
            
+        @mock_s3
+        def download_from_s3(self):
+#            from src.schema_reader import _download_file
+#            from rollback import CErrorTypes, send_record_to_s3, archive
+#            import json
+            conn = boto3.resource('s3', region_name='us-east-1')
+            conn.create_bucket(Bucket=self.BUCKET_NAME)
+            client = boto3.client('s3', region_name='us-east-1')
+            print(self.FILE_LOCATION)
+            with open(self.FILE_LOCATION, 'rb') as data:
+                client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
+            
+            ###  Print
+            
+            resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
+            content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
+            print("Content-Length: {}".format(content_length))
            
 if __name__ == '__main__':
     unittest.main()            

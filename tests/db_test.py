@@ -46,7 +46,7 @@ sql = pgmock.sql(query, patch)
 print(sql)
 
 # Execute the SQL and verify that filtering happened correctly
-results = list(test_engine.execute(sql))
+results = list(db_conn.execute(sql))
 assert results == [('hello',), ('hi',)]
 
 '''

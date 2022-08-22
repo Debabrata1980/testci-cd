@@ -17,6 +17,9 @@ import pgmock.exceptions
 #test_db = testing.postgresql.Postgresql()
 #test_engine = sqlalchemy.create_engine(test_db.url())
 
+db_conn = sqlalchemy.create_engine('postgresql://localhost:5432/local-db')
+
+
 query = '''SELECT * from table1;
 SELECT * from table2;
 SELECT * from table3

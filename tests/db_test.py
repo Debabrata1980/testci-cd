@@ -10,12 +10,12 @@ import pytest
 
 import pgmock
 
-import testing.postgresql
+#import testing.postgresql
 import sqlalchemy
 import pgmock.exceptions
 
-test_db = testing.postgresql.Postgresql()
-test_engine = sqlalchemy.create_engine(test_db.url())
+#test_db = testing.postgresql.Postgresql()
+#test_engine = sqlalchemy.create_engine(test_db.url())
 
 query = '''SELECT * from table1;
 SELECT * from table2;

@@ -10,7 +10,43 @@ import pytest
 
 import pgmock
 
+import testing.postgresql
+import sqlalchemy
+import pgmock.exceptions
 
+test_db = testing.postgresql.Postgresql()
+test_engine = sqlalchemy.create_engine(test_db.url())
+
+query = '''SELECT * from table1;
+SELECT * from table2;
+SELECT * from table3
+'''
+
+# Obtain the first statement
+print(pgmock.sql(query, pgmock.statement(0)))
+
+# Obtain the first three statements using a range of 0 - 3 (3 is the exclusive ending index)
+print(pgmock.sql(query, pgmock.statement(0, 3)))
+
+# Create a query and filter a column
+query = "SELECT c2 FROM my_table WHERE c1 = 'value'"
+
+# Create a patch for the table. The patch takes a selector,
+# rows (a list of lists for each column or a list of dictionaries keyed on column),
+# and column names
+patch = pgmock.patch(pgmock.table('my_table'),
+                     [('dummy_data', 'data'), ('value', 'hello'), ('value', 'hi')],
+                     ['c1', 'c2'])
+
+# Render the patched SQL so that we can execute it
+sql = pgmock.sql(query, patch)
+print(sql)
+
+# Execute the SQL and verify that filtering happened correctly
+results = list(test_engine.execute(sql))
+assert results == [('hello',), ('hi',)]
+
+'''
 @pytest.fixture
 def pgmocker(transacted_postgresql_db):
     with pgmock.mock(transacted_postgresql_db.connection) as mocker:
@@ -58,3 +94,4 @@ def test_patch_subquery_from_file(transacted_postgresql_db, tmpdir):
 
     results = list(transacted_postgresql_db.connection.execute(patched))
     assert results == [('v1', None), (None, 'v4')]
+ '''

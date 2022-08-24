@@ -3,6 +3,7 @@ from moto import mock_s3
 from src.mymodule import MyModel
 from src import *
 import unittest
+import os
 #import src.schema_reader_tst
 
 
@@ -12,8 +13,10 @@ class MyUnitTest(unittest.TestCase):
         FILE_NAME = "db_tables"
         PATH = "./file_bkp"
         PATH_ARCH = "./arch"
+        PATH_DWONLOAD = "./download"
         FILE_LOCATION = f'{PATH}/{FILE_NAME}.json'
         FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}.json'
+        FILE_LOCATION_DOWNLOAD = f'{PATH_DOWNLOAD}/{FILE_NAME}.json'
         
         @mock_s3
         def test_my_model_save(self):
@@ -52,8 +55,9 @@ class MyUnitTest(unittest.TestCase):
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')
-            resp1 = read_file._downlaod_file (self.BUCKET_NAME,self.FILE_LOCATION,client=client)
+            resp1 = read_file._download_file(self.BUCKET_NAME,self.FILE_LOCATION_DOWNLOAD,client=client)
             print(resp1)
+            assert os.path.isfile(self.FILE_NAME)
 
            
 if __name__ == '__main__':

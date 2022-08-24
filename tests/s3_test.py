@@ -3,7 +3,7 @@ from moto import mock_s3
 from src.mymodule import MyModel
 from src import *
 import unittest
-import src.schema_reader_tst
+#import src.schema_reader_tst
 
 
 class MyUnitTest(unittest.TestCase):

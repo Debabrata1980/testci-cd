@@ -53,6 +53,7 @@ class MyUnitTest(unittest.TestCase):
             conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')
             resp1 = read_file._downlaod_file (self.BUCKET_NAME,self.FILE_LOCATION,client=client)
+            print(resp1)
 
            
 if __name__ == '__main__':

@@ -44,10 +44,10 @@ class MyUnitTest(unittest.TestCase):
             
             resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
             '''
-            resp = archive(json.dumps(data).encode(),Bucket=self.BUCKET_NAME, self.FILE_LOCATION_ARCH)
-            print(resp)
-            content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
-            print("Content-Length: {}".format(content_length))
+                resp = archive(json.dumps(data).encode(),Bucket=self.BUCKET_NAME, self.FILE_LOCATION_ARCH)
+                print(resp)
+                content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
+                print("Content-Length: {}".format(content_length))
            
         @mock_s3
         def download_from_s3(self):

@@ -37,7 +37,7 @@ class MyUnitTest(unittest.TestCase):
             print(self.FILE_LOCATION)
             
             with open(self.FILE_LOCATION, 'rb') as data:
-                resp = archive(json.dumps(data).encode(),Bucket=self.BUCKET_NAME, record_name=self.FILE_LOCATION_ARCH)
+                resp = archive(json.dumps(data),Bucket=self.BUCKET_NAME, record_name=self.FILE_LOCATION_ARCH)
                 print(resp)
                 content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
                 print("Content-Length: {}".format(content_length))

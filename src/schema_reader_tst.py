@@ -20,7 +20,7 @@ class Schema:
 
     def _download_file(self, bucket: str, prefix: str, client: boto3.client):
         s3.Bucket(bucket).download_file(
-            f'schema/{self.file_name}', prefix ):str:str
+            f'schema/{self.file_name}', prefix )
         return
 
     def _read_data(self,prefix: str):

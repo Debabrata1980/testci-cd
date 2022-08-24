@@ -37,18 +37,14 @@ class MyUnitTest(unittest.TestCase):
             print(self.FILE_LOCATION)
             
             with open(self.FILE_LOCATION, 'rb') as data:
-            '''
-               client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
-            
-            ###  Print
-            
-            resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
-            '''
                 resp = archive(json.dumps(data).encode(),Bucket=self.BUCKET_NAME, self.FILE_LOCATION_ARCH)
                 print(resp)
                 content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
                 print("Content-Length: {}".format(content_length))
-           
+ 
+               # client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
+               # resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
+     
         @mock_s3
         def download_from_s3(self):
             read_file = schema_reader_tst(self.FILE_NAME)

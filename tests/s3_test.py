@@ -4,7 +4,7 @@ from src.mymodule import MyModel
 from src import *
 import unittest
 import os
-import src.schema_reader_tst
+#import src.schema_reader_tst
 
 
 class MyUnitTest(unittest.TestCase):

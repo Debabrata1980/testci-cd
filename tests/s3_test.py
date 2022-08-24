@@ -37,7 +37,7 @@ class MyUnitTest(unittest.TestCase):
             print(self.FILE_LOCATION)
             
             with open(self.FILE_LOCATION, 'rb') as data:
-                resp = archive(json.dumps(data).encode(),Bucket=self.BUCKET_NAME, self.FILE_LOCATION_ARCH)
+                resp = archive(json.dumps(data).encode(),Bucket=self.BUCKET_NAME, record_name=self.FILE_LOCATION_ARCH)
                 print(resp)
                 content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
                 print("Content-Length: {}".format(content_length))
@@ -51,7 +51,7 @@ class MyUnitTest(unittest.TestCase):
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')
-            resp1 = read_file._downlaod_file (Bucket=self.BUCKET_NAME,self.FILE_LOCATION,client=client)
+            resp1 = read_file._downlaod_file (self.BUCKET_NAME,self.FILE_LOCATION,client=client)
 
            
 if __name__ == '__main__':

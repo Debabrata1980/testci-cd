@@ -4,7 +4,7 @@ from src.mymodule import MyModel
 from src import *
 import unittest
 import os
-from src.schema_reader_tst import  schema_reader_tst 
+from src.schema_reader_tst import  Schema 
 
 
 class MyUnitTest(unittest.TestCase):
@@ -51,7 +51,7 @@ class MyUnitTest(unittest.TestCase):
      
         @mock_s3
         def test_download_from_s3(self):
-            read_file = schema_reader_tst(self.FILE_NAME)
+            read_file = Schema(self.FILE_NAME)
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')

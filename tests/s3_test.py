@@ -50,7 +50,7 @@ class MyUnitTest(unittest.TestCase):
                # resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
      
         @mock_s3
-        def download_from_s3(self):
+        def test_download_from_s3(self):
             read_file = schema_reader_tst(self.FILE_NAME)
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)

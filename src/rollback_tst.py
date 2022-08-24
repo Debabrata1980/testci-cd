@@ -23,6 +23,7 @@ class CErrorTypes(Enum):
 
 
 def _put_to_s3(data: str, bucket: str, file_name:str):
+    s3 = boto3.resource('s3', region_name='us-west-2')
     s3object = s3.Object(bucket, file_name)
     resp = s3object.put(Body=(bytes(json.dumps(data).encode('UTF-8'))))
     print(resp)

@@ -52,11 +52,11 @@ class MyUnitTest(unittest.TestCase):
         @mock_s3
         def test_download_from_s3(self):
             read_file = Schema(self.FILE_NAME)
-            conn = boto3.resource('s3', region_name='us-east-1')
+            #conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)
-            client = boto3.client('s3', region_name='us-east-1')
+            #client = boto3.client('s3', region_name='us-east-1')
             #s3.put_object(Bucket=self.BUCKET_NAME, Key= self.FILE_NAME, Body='')
-            resp1 = read_file._download_file(self.BUCKET_NAME,self.FILE_LOCATION_DOWNLOAD,client=client)
+            resp1 = read_file._download_file(self.BUCKET_NAME,self.FILE_LOCATION_DOWNLOAD)
             print(resp1)
             assert os.path.isfile(self.FILE_NAME)
 

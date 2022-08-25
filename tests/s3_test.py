@@ -10,13 +10,13 @@ from src.schema_reader_tst import  Schema
 class MyUnitTest(unittest.TestCase):
 
         BUCKET_NAME = "mybucket"
-        FILE_NAME = "db_tables"
+        FILE_NAME = "db_tables.json"
         PATH = "./file_bkp"
         PATH_ARCH = "./arch"
         PATH_DOWNLOAD = "./schema"
-        FILE_LOCATION = f'{PATH}/{FILE_NAME}.json'
-        FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}.json'
-        FILE_LOCATION_DOWNLOAD = f'{PATH_DOWNLOAD}/{FILE_NAME}.json'
+        FILE_LOCATION = f'{PATH}/{FILE_NAME}'
+        FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}'
+        FILE_LOCATION_DOWNLOAD = f'{PATH_DOWNLOAD}/{FILE_NAME}'
         
         @mock_s3
         def test_my_model_save(self):
@@ -56,7 +56,7 @@ class MyUnitTest(unittest.TestCase):
             buck=conn.create_bucket(Bucket=self.BUCKET_NAME)
             #client = boto3.client('s3', region_name='us-east-1')
             buck.put_object(Bucket=self.BUCKET_NAME, Key= f'./file_bkp/{self.FILE_NAME}', Body='')
-            resp1 = read_file._download_file(location = f'./file_bkp/{self.FILE_NAME}' , bucket = self.BUCKET_NAME,prefix =self.FILE_LOCATION_DOWNLOAD)
+            resp1 = read_file._download_file(location = self.FILE_NAME , bucket = self.BUCKET_NAME,prefix ='./tmp/')
             print(resp1)
             #assert os.path.isfile(self.FILE_NAME)
 

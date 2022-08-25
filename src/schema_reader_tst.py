@@ -21,7 +21,7 @@ class Schema:
     def _download_file(self, location:str, bucket: str, prefix: str):
         s3 = boto3.resource('s3', region_name='us-west-2')
         s3.Bucket(bucket).download_file(
-            prefix,location )
+            location,prefix )
         return
 
     def _read_data(self,prefix: str):

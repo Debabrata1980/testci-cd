@@ -62,7 +62,7 @@ class MyUnitTest(unittest.TestCase):
             print(resp2)
             print("Content-Length: {}".format(content_length))
             with tempfile.TemporaryDirectory() as tmpdir:
-                read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,tmpdir')
+                read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,tmpdir)
                 mock_folder_local_path = os.path.join(tmpdir)
                 print(mock_folder_local_path)
                 self.assertTrue(os.path.isdir(mock_folder_local_path))            

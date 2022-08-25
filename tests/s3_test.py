@@ -61,9 +61,13 @@ class MyUnitTest(unittest.TestCase):
             content_length = resp2["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             print(resp2)
             print("Content-Length: {}".format(content_length))
-            
-            resp1 = read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,f'/tmp/{self.FILE_NAME}')
-            print(resp1)
+            read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,f'/tmp/{self.FILE_NAME}')
+            mock_folder_local_path = os.path.join('./tmp/, f'/tmp/{self.FILE_NAME}')
+            self.assertTrue(os.path.isdir(mock_folder_local_path))
+            result = os.listdir(mock_folder_local_path)
+            desired_result = ["db_tables.json"]
+            self.assertCountEqual(result, desired_result)
+            #print(resp1)
             #assert os.path.isfile(self.FILE_NAME)
 
            

@@ -45,8 +45,10 @@ class MyUnitTest(unittest.TestCase):
             resp = archive(json.load(f),bucket=self.BUCKET_NAME, record_name=self.FILE_LOCATION_ARCH)
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
+            respone = resp["ResponseMetadata"]["HTTPHeaders"]["HTTPStatusCode"]
             print("Content-Length: {}".format(content_length))
-            assert content_length = 36971
+            assert content_length == '36971'
+            assert respone == '200' 
  
                # client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
                # resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)

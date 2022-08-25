@@ -58,7 +58,7 @@ class MyUnitTest(unittest.TestCase):
             #buck.put_object(Bucket=self.BUCKET_NAME, Key= f'./file_bkp/{self.FILE_NAME}', Body='')
             resp2=buck.upload_file(self.FILE_LOCATION,f'dump/{self.FILE_NAME}')
             print(resp2)
-            resp2 = client.get_object(Bucket=self.BUCKET_NAME, Key=FILE_NAME)
+            resp2 = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
             content_length = resp2["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             print("Content-Length: {}".format(content_length))
             

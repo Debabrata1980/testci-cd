@@ -76,6 +76,13 @@ class MyUnitTest(unittest.TestCase):
             #print(resp1)
             #assert os.path.isfile(self.FILE_NAME)
 
+        @mock_s3
+        def test_read_data(self):
+            read_file = Schema(self.FILE_NAME)
+            data=read_file._read_data(FILE_LOCATION)
+            f=open(FILE_LOCATION)
+            self.assertDictEqual(json.loads(f), data)
+
            
 if __name__ == '__main__':
     unittest.main()            

@@ -55,8 +55,9 @@ class MyUnitTest(unittest.TestCase):
             conn = boto3.resource('s3', region_name='us-east-1')
             buck=conn.create_bucket(Bucket=self.BUCKET_NAME)
             #client = boto3.client('s3', region_name='us-east-1')
-            buck.put_object(Bucket=self.BUCKET_NAME, Key= f'./file_bkp/{self.FILE_NAME}', Body='')
-            resp1 = read_file._download_file(location = self.FILE_NAME , bucket = self.BUCKET_NAME,prefix ='./tmp/')
+            #buck.put_object(Bucket=self.BUCKET_NAME, Key= f'./file_bkp/{self.FILE_NAME}', Body='')
+            buck.upload_file(FILE_LOCATION,f'dump/{self.FILE_NAME})
+            resp1 = read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,'./tmp/')
             print(resp1)
             #assert os.path.isfile(self.FILE_NAME)
 

@@ -28,7 +28,7 @@ class Schema:
         file_name = path.join(path.dirname(path.abspath(__file__)), prefix)
         with open(file_name, 'r') as myfile:
              data = json.loads(myfile.read())
-        yield data 
+        return  data 
 
     def _write_to_data(self):
         file_name = f'schema/{self.file_name}'

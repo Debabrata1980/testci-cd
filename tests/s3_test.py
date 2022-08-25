@@ -6,6 +6,7 @@ import unittest
 import os
 from src.schema_reader_tst import  Schema 
 import tempfile
+import json
 
 
 class MyUnitTest(unittest.TestCase):

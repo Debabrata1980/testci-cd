@@ -82,7 +82,7 @@ class MyUnitTest(unittest.TestCase):
             read_file = Schema(self.FILE_NAME)
             data=read_file._read_data(self.FILE_LOCATION)
             f=open(self.FILE_LOCATION)
-            self.assertEqual(json.load(f), data)
+            self.assertEqual(json.loads(f).read(), data)
 
            
 if __name__ == '__main__':

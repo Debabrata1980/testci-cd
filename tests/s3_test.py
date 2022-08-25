@@ -15,9 +15,11 @@ class MyUnitTest(unittest.TestCase):
         FILE_NAME = "db_tables.json"
         PATH = "./file_bkp"
         PATH_ARCH = "./arch"
+        PATH_NEW_SCHEMA = "./new_schema"
         PATH_DOWNLOAD = "./schema"
         FILE_LOCATION = f'{PATH}/{FILE_NAME}'
-        FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}'
+        S3_FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}'
+        S3_FILE_LOCATION_NEW_SCHEMA = f'{PATH_NEW_SCHEMA}/{FILE_NAME}'
         FILE_LOCATION_DOWNLOAD = f'{PATH_DOWNLOAD}/{FILE_NAME}'
         
         @mock_s3
@@ -43,7 +45,7 @@ class MyUnitTest(unittest.TestCase):
             
 #            with open(self.FILE_LOCATION, 'r') as data:
             f=open(self.FILE_LOCATION)
-            resp = archive(json.load(f),bucket=self.BUCKET_NAME, record_name=self.FILE_LOCATION_ARCH)
+            resp = archive(json.load(f),bucket=self.BUCKET_NAME, record_name=self.S3_FILE_LOCATION_ARCH)
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             respone = resp["ResponseMetadata"]["HTTPStatusCode"]
@@ -53,6 +55,26 @@ class MyUnitTest(unittest.TestCase):
  
                # client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
                # resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
+
+        @mock_s3
+        def test_send_record_to_s3(self):
+#            from src.schema_reader_tst import _download_file
+            from src.rollback_tst import CErrorTypes, send_record_to_s3, archive
+            import json
+            conn = boto3.resource('s3', region_name='us-east-1')
+            conn.create_bucket(Bucket=self.BUCKET_NAME)
+#           client = boto3.client('s3', region_name='us-east-1')
+            print(self.FILE_LOCATION)
+            
+#            with open(self.FILE_LOCATION, 'r') as data:
+            f=open(self.FILE_LOCATION)
+            resp = send_record_to_s3(json.load(f),bucket=self.BUCKET_NAME, record_name=self.S3_FILE_LOCATION_NEW_SCHEMA)
+            print(resp)
+            content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
+            respone = resp["ResponseMetadata"]["HTTPStatusCode"]
+            print("Content-Length: {}".format(content_length))
+            assert content_length == '36971'
+            assert respone == 200 
      
         @mock_s3
         def test_download_from_s3(self):

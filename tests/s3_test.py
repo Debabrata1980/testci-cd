@@ -45,7 +45,7 @@ class MyUnitTest(unittest.TestCase):
             resp = archive(json.load(f),bucket=self.BUCKET_NAME, record_name=self.FILE_LOCATION_ARCH)
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
-            respone = resp["ResponseMetadata"]["HTTPHeaders"]["HTTPStatusCode"]
+            respone = resp["ResponseMetadata"]["HTTPStatusCode"]
             print("Content-Length: {}".format(content_length))
             assert content_length == '36971'
             assert respone == '200' 

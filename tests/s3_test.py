@@ -47,8 +47,8 @@ class MyUnitTest(unittest.TestCase):
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             respone = resp["ResponseMetadata"]["HTTPStatusCode"]
             print("Content-Length: {}".format(content_length))
-            assert content_length == '36971'
-            assert respone == '200' 
+            assert content_length == 36971
+            assert respone == 200 
  
                # client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
                # resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)

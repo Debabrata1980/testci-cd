@@ -56,10 +56,10 @@ class MyUnitTest(unittest.TestCase):
             buck=conn.create_bucket(Bucket=self.BUCKET_NAME)
             client = boto3.client('s3', region_name='us-east-1')
             #buck.put_object(Bucket=self.BUCKET_NAME, Key= f'./file_bkp/{self.FILE_NAME}', Body='')
-            resp2=buck.upload_file(self.FILE_LOCATION,f'dump/{self.FILE_NAME}')
-            print(resp2)
+            buck.upload_file(self.FILE_LOCATION,f'dump/{self.FILE_NAME}')            
             resp2 = client.get_object(Bucket=self.BUCKET_NAME, Key=f'dump/{self.FILE_NAME}')
             content_length = resp2["ResponseMetadata"]["HTTPHeaders"]["content-length"]
+            print(resp2)
             print("Content-Length: {}".format(content_length))
             
             resp1 = read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,f'/tmp/{self.FILE_NAME}')

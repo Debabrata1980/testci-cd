@@ -13,7 +13,7 @@ class MyUnitTest(unittest.TestCase):
         FILE_NAME = "db_tables"
         PATH = "./file_bkp"
         PATH_ARCH = "./arch"
-        PATH_DOWNLOAD = "./download"
+        PATH_DOWNLOAD = "./schema"
         FILE_LOCATION = f'{PATH}/{FILE_NAME}.json'
         FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}.json'
         FILE_LOCATION_DOWNLOAD = f'{PATH_DOWNLOAD}/{FILE_NAME}.json'

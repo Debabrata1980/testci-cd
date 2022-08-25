@@ -18,10 +18,10 @@ class Schema:
 #        self._download_file()
 #        self._read_data()
 
-    def _download_file(self, bucket: str, prefix: str):
+    def _download_file(self, location:str, bucket: str, prefix: str):
         s3 = boto3.resource('s3', region_name='us-west-2')
         s3.Bucket(bucket).download_file(
-            f'schema/{self.file_name}', prefix )
+            location, prefix )
         return
 
     def _read_data(self,prefix: str):

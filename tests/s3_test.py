@@ -62,7 +62,7 @@ class MyUnitTest(unittest.TestCase):
             print(resp2)
             print("Content-Length: {}".format(content_length))
             read_file._download_file(f'dump/{self.FILE_NAME}' , self.BUCKET_NAME,f'/tmp/{self.FILE_NAME}')
-            mock_folder_local_path = os.path.join('./tmp/, f'/tmp/{self.FILE_NAME}')
+            mock_folder_local_path = os.path.join('./tmp/', f'/tmp/{self.FILE_NAME}')
             self.assertTrue(os.path.isdir(mock_folder_local_path))
             result = os.listdir(mock_folder_local_path)
             desired_result = ["db_tables.json"]

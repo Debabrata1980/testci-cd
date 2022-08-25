@@ -80,7 +80,7 @@ class MyUnitTest(unittest.TestCase):
         def test_read_data(self):
             read_file = Schema(self.FILE_NAME)
             data=read_file._read_data(self.FILE_LOCATION)
-            f=open(FILE_LOCATION)
+            f=open(self.FILE_LOCATION)
             self.assertDictEqual(json.loads(f), data)
 
            

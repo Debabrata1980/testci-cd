@@ -46,6 +46,7 @@ class MyUnitTest(unittest.TestCase):
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             print("Content-Length: {}".format(content_length))
+            assert content_length = 36971
  
                # client.upload_fileobj(data, self.BUCKET_NAME, self.FILE_NAME)
                # resp = client.get_object(Bucket=self.BUCKET_NAME, Key=self.FILE_NAME)
@@ -68,7 +69,7 @@ class MyUnitTest(unittest.TestCase):
                 print(mock_folder_local_path)
                 self.assertTrue(os.path.isdir(mock_folder_local_path))            
                 result = os.listdir(mock_folder_local_path)
-                desired_result = ["db_tables.json"]
+                desired_result = [self.FILE_NAME]
                 self.assertCountEqual(result, desired_result)
             #print(resp1)
             #assert os.path.isfile(self.FILE_NAME)

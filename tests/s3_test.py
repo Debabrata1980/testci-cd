@@ -5,6 +5,7 @@ from src import *
 import unittest
 import os
 from src.schema_reader_tst import  Schema 
+import tempfile
 
 
 class MyUnitTest(unittest.TestCase):

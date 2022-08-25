@@ -20,9 +20,9 @@ class Schema:
 
     def _download_file(self, location:str, bucket: str, prefix: str):
         s3 = boto3.resource('s3', region_name='us-west-2')
-        s3.Bucket(bucket).download_file(
+        resp = s3.Bucket(bucket).download_file(
             location,prefix )
-        return
+        return resp
 
     def _read_data(self,prefix: str):
         file_name = path.join(path.dirname(path.abspath(__file__)), prefix)

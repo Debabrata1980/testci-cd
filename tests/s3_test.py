@@ -80,7 +80,7 @@ class MyUnitTest(unittest.TestCase):
         @mock_s3
         def test_read_data(self):
             read_file = Schema(self.FILE_NAME)
-            data=read_file._read_data(f'../file_bkp/{self.{FILE_NAME}}')
+            data=read_file._read_data(f'../file_bkp/{self.FILE_NAME}}')
             f=open(self.FILE_LOCATION)
             self.assertEqual(json.load(f), data)
 

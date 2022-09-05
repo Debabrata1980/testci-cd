@@ -64,9 +64,9 @@ jobs:
 #        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: check the file in specific folder and Test with unittest
       run: |
-#           chmod +x testrun.sh
            cd .
            pytest 
+#           chmod +x testrun.sh
 #           ./testrun.sh ./tests #${{ inputs.python-folder }}
 #      shell: bash    
       env:

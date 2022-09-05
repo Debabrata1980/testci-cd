@@ -66,7 +66,7 @@ jobs:
       run: |
            cd .
            echo "$POSTGRE_CONN"
-           python db_test_upd.py $POSTGRE_CONN
+           python ./tests/db_test_upd.py $POSTGRE_CONN
 #           chmod +x testrun.sh
 #           ./testrun.sh ./tests #${{ inputs.python-folder }}
  #          python ./tests/db_test.py $POSTGRE_CONN

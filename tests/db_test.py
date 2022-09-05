@@ -22,9 +22,9 @@ import pgmock.exceptions
 
 #DB_URL = 'postgresql://POSTGRES_HOST:POSTGRES_PORT/postgres'
 
-print($POSTGRE_CONN)
+pg_conn = $POSTGRE_CONN)
 
-db_conn = sqlalchemy.create_engine($POSTGRE_CONN)
+db_conn = sqlalchemy.create_engine(pg_conn)
 
 
 query = '''SELECT * from table1;

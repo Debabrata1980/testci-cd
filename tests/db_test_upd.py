@@ -21,9 +21,9 @@ class TestDB(unittest.TestCase):
        
        
    def test_foobar(self):
-       self.connection.execute("CREATE Table test(id int,name char)")
-       self.connection.execute("insert into test values (1,'tes')")
-       self.connection.execute("insert into test values (1,'tes')")
+       self.connection.execute("CREATE Table test(id int,name varchar)")
+       self.connection.execute("insert into test values (1,'test')")
+       self.connection.execute("insert into test values (2,'test1')")
        result = list(self.connection.execute("select id from test "))
        assert result == [1]
         #self.assertTrue(myapp.store_integer(self.engine, 42))

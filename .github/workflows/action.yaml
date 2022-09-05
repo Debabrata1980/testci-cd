@@ -26,7 +26,7 @@ jobs:
 
     runs-on: ubuntu-latest
     # Docker Hub image that `container-job` executes in
-    container: ubuntu:20.04 #node:10.18-jessie
+#    container: ubuntu:20.04 #node:10.18-jessie
     # Service containers to run with `container-job`
     services:
     # Label used to access the service container
@@ -53,12 +53,12 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        apt-get update -y
-        apt-get install -y glibc-source libssl-dev
-        apt-get install sudo
+#        apt-get update -y
+#        apt-get install -y glibc-source libssl-dev
+#        apt-get install sudo
         python -m pip install --trusted-host pypi.org --upgrade pip
-        sudo -H pip install --trusted-host pypi.org flake8 pytest
-        if [ -f requirements.txt ]; then sudo -H pip install --trusted-host pypi.org -r requirements.txt; fi
+        pip install --trusted-host pypi.org flake8 pytest
+        if [ -f requirements.txt ]; then pip install --trusted-host pypi.org -r requirements.txt; fi
 #    - name: Lint with flake8
 #      run: |
 #        # stop the build if there are Python syntax errors or undefined names

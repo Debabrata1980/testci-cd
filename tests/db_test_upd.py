@@ -9,8 +9,6 @@ class TestDB(unittest.TestCase):
    DB_TEST_URL = ""
    def setUp(self):
        url = self.DB_TEST_URL
-       print(self.DB_TEST_URL)
-       print(url)
        if not url:
            self.skipTest("No database URL set")
        self.engine = sqlalchemy.create_engine(url)
@@ -25,6 +23,7 @@ class TestDB(unittest.TestCase):
        self.connection.execute("insert into test values (1,'test')")
        self.connection.execute("insert into test values (2,'test1')")
        result = list(self.connection.execute("select id from test "))
+       print(result)
        assert result == [1]
         #self.assertTrue(myapp.store_integer(self.engine, 42))
 

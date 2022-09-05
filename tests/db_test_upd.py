@@ -12,6 +12,8 @@ class TestDB(unittest.TestCase):
        if not url:
            self.skipTest("No database URL set")
        self.engine = sqlalchemy.create_engine(url)
+       self.connection = self.engine.connect()
+       self.connection.execute("CREATE DATABASE testdb")
 
    def test_foobar(self):
         pass

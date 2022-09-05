@@ -65,9 +65,10 @@ jobs:
     - name: check the file in specific folder and Test with unittest
       run: |
            chmod +x testrun.sh
-           cd .
-           ./testrun.sh ./tests #${{ inputs.python-folder }}
-      shell: bash    
+           cd ./tests
+           pytest 
+#           ./testrun.sh ./tests #${{ inputs.python-folder }}
+#      shell: bash    
       env:
           # The hostname used to communicate with the PostgreSQL service container
           POSTGRES_HOST: localhost

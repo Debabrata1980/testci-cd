@@ -70,9 +70,6 @@ jobs:
 #           ./testrun.sh ./tests #${{ inputs.python-folder }}
 #      shell: bash    
       env:
-          # The hostname used to communicate with the PostgreSQL service container
-          POSTGRES_HOST: localhost
-          # The default PostgreSQL port
-          POSTGRES_PORT: 5432
+        POSTGRE_CONN: postgresql://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports['5432'] }}/postgres
 #        python  *.py 
 #        pytest my_fib.py

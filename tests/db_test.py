@@ -19,7 +19,12 @@ import pgmock.exceptions
 
 #db_conn = sqlalchemy.create_engine('postgresql://localhost:5432/local-db')
 
+print(POSTGRES_HOST)
+print(POSTGRES_PORT)
+
 DB_URL = 'postgresql://POSTGRES_HOST:POSTGRES_PORT/postgres'
+
+print(DB_URL)
 
 db_conn = sqlalchemy.create_engine(DB_URL)
 

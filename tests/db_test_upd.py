@@ -7,13 +7,13 @@ import sys
 
 class TestDB(unittest.TestCase):
    DB_TEST_URL = ""
-    def setUp(self):
+   def setUp(self):
        url = os.getenv(self.DB_TEST_URL)
        if not url:
            self.skipTest("No database URL set")
        self.engine = sqlalchemy.create_engine(url)
 
-    def test_foobar(self):
+   def test_foobar(self):
         pass
         #self.assertTrue(myapp.store_integer(self.engine, 42))
 

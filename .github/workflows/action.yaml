@@ -56,9 +56,9 @@ jobs:
         apt-get update -y
         apt-get install -y glibc-source libssl-dev
         apt-get install sudo
-        python -m pip install --trusted-host pypi.org --upgrade pip
-        sudo pip install --trusted-host pypi.org flake8 pytest
-        if [ -f requirements.txt ]; then pip install --trusted-host pypi.org -r requirements.txt; fi
+        sudo -H pip install --trusted-host pypi.org --upgrade pip
+        sudo -H pip install --trusted-host pypi.org flake8 pytest
+        if [ -f requirements.txt ]; then sudo -H pip install --trusted-host pypi.org -r requirements.txt; fi
 #    - name: Lint with flake8
 #      run: |
 #        # stop the build if there are Python syntax errors or undefined names

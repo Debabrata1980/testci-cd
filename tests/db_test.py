@@ -22,7 +22,7 @@ import pgmock.exceptions
 
 #DB_URL = 'postgresql://POSTGRES_HOST:POSTGRES_PORT/postgres'
 
-pg_conn = $POSTGRE_CONN)
+pg_conn = $POSTGRE_CONN
 
 db_conn = sqlalchemy.create_engine(pg_conn)
 

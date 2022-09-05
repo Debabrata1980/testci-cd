@@ -55,9 +55,9 @@ jobs:
       run: |
         apt-get update -y
         apt-get install -y glibc-source
-        python -m pip install --trusted-host pypi.python.org --upgrade pip
-        pip install --trusted-host pypi.python.org flake8 pytest
-        if [ -f requirements.txt ]; then pip install --trusted-host pypi.python.org -r requirements.txt; fi
+        python -m pip install --trusted-host pypi.org --upgrade pip
+        pip install --trusted-host pypi.org flake8 pytest
+        if [ -f requirements.txt ]; then pip install --trusted-host pypi.org -r requirements.txt; fi
 #    - name: Lint with flake8
 #      run: |
 #        # stop the build if there are Python syntax errors or undefined names

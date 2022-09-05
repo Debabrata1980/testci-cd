@@ -65,7 +65,7 @@ jobs:
     - name: check the file in specific folder and Test with unittest
       run: |
            cd .
-           pytest 
+           python ./tests/db_test.py
 #           chmod +x testrun.sh
 #           ./testrun.sh ./tests #${{ inputs.python-folder }}
 #      shell: bash    

@@ -65,10 +65,11 @@ jobs:
     - name: check the file in specific folder and Test with unittest
       run: |
            cd .
-           python ./tests/db_test.py
-#           chmod +x testrun.sh
-#           ./testrun.sh ./tests #${{ inputs.python-folder }}
-#      shell: bash    
+           echo "$POSTGRE_CONN"
+ #          python ./tests/db_test.py $POSTGRE_CONN
+           chmod +x testrun.sh
+           ./testrun.sh ./tests #${{ inputs.python-folder }}
+      shell: bash    
       env:
         POSTGRE_CONN: postgresql://postgres:postgres@127.0.0.1:${{ job.services.postgres.ports['5432'] }}/postgres
 #        python  *.py 

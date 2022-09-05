@@ -8,7 +8,7 @@ import sys
 class TestDB(unittest.TestCase):
    DB_TEST_URL = ""
    def setUp(self):
-       url = os.getenv(self.DB_TEST_URL)
+       url = self.DB_TEST_URL
        print(self.DB_TEST_URL)
        print(url)
        if not url:

@@ -15,8 +15,15 @@ class TestDB(unittest.TestCase):
        self.connection = self.engine.connect()
        self.connection.execute("CREATE DATABASE testdb")
 
+       
+       
+       
    def test_foobar(self):
-        pass
+       self.connection.execute("CREATE Table test(id int,name char)")
+       self.connection.execute("insert into test values (1,'tes')")
+       self.connection.execute("insert into test values (1,'tes')")
+       result = list(self.connection.execute("select id from test ")
+       assert result == [1]
         #self.assertTrue(myapp.store_integer(self.engine, 42))
 
 if __name__ == '__main__':

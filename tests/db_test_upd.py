@@ -23,8 +23,7 @@ class TestDB(unittest.TestCase):
        self.connection.execute("insert into test values (1,'test')")
        self.connection.execute("insert into test values (2,'test1')")
        result = list(self.connection.execute("select id from test "))
-       print(result)
-       assert result == [1]
+       assert result == [(1,), (2,)]
         #self.assertTrue(myapp.store_integer(self.engine, 42))
 
 if __name__ == '__main__':

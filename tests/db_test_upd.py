@@ -13,6 +13,7 @@ class TestDB(unittest.TestCase):
            self.skipTest("No database URL set")
        self.engine = sqlalchemy.create_engine(url)
        self.connection = self.engine.connect()
+       self.connection = self.engine.begin()
 #       self.connection.execute("CREATE DATABASE testdb")
 
        

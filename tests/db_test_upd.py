@@ -2,6 +2,7 @@ import unittest
 import os
 import sqlalchemy
 import sys
+from sqlalchemy import text
 
 #import myapp
 
@@ -22,7 +23,7 @@ class TestDB(unittest.TestCase):
    def test_foobar(self):
         with self.engine.connect() as connection:
             with connection.begin():
-                connection.execute("CREATE Table test1(age VARCHAR ( 50 ),name VARCHAR ( 50 ))")
+                connection.execute(text("CREATE Table test1(age VARCHAR ( 50 ),name VARCHAR ( 50 ))"))
 #                r1 = connection.execute(test1.select())
                 connection.execute(test1.insert(), {"age": '7', "name": "this is some data"})       
 #        self.connection.execute("CREATE Table test1(age VARCHAR ( 50 ),name VARCHAR ( 50 ))")

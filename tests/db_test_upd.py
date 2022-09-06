@@ -12,17 +12,21 @@ class TestDB(unittest.TestCase):
        if not url:
            self.skipTest("No database URL set")
        self.engine = sqlalchemy.create_engine(url)
-       self.connection = self.engine.connect()
-       self.connection = self.engine.begin()
+#       self.connection = self.engine.connect()
+#       self.connection = self.engine.begin()
 #       self.connection.execute("CREATE DATABASE testdb")
 
        
        
        
    def test_foobar(self):
-        
-        self.connection.execute("CREATE Table test1(age VARCHAR ( 50 ),name VARCHAR ( 50 ))")
-        self.connection.execute(test1.insert(), {"age": '7', "name": "this is some data"})
+        with self.engine.connect() as connection:
+            with connection.begin():
+                connection.execute(text("CREATE Table test1(age VARCHAR ( 50 ),name VARCHAR ( 50 ))"))
+#                r1 = connection.execute(test1.select())
+                connection.execute(test1.insert(), {"age": '7', "name": "this is some data"})       
+#        self.connection.execute("CREATE Table test1(age VARCHAR ( 50 ),name VARCHAR ( 50 ))")
+#        self.connection.execute(test1.insert(), {"age": '7', "name": "this is some data"})
  #      self.connection.execute("CREATE Table test(id int,name varchar)")
        
  #      self.connection.execute("insert into test values (1,'test')")

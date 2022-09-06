@@ -26,6 +26,9 @@ class TestDB(unittest.TestCase):
         self.connection.execute('''CREATE TABLE accounts (age VARCHAR ( 50 ),name VARCHAR ( 50 ));''')
         self.connection.execute('''INSERT INTO accounts (age,"name") values('22','deb')''')
         trans.commit()
+        result = list(self.connection.execute("select age from accounts "))
+#        assert result == [(1,), (22,)]
+         assert result == [('22',)]
 
         '''
         with self.engine.connect() as connection:

@@ -28,7 +28,7 @@ class TestDB(unittest.TestCase):
         trans.commit()
         result = list(self.connection.execute("select age from accounts "))
 #        assert result == [(1,), (22,)]
-         assert result == [('22',)]
+        assert result == [('22',)]
 
         '''
         with self.engine.connect() as connection:

@@ -61,7 +61,7 @@ class MyUnitTest(unittest.TestCase):
         def test_send_record_to_s3(self):
 #            from src.schema_reader_tst import _download_file
 #            from src.rollback_tst import CErrorTypes, send_record_to_s3, archive
-            from src.rollback_tst import CErrorTypes, send_record_to_s3, archive
+            from src.rollback import CErrorTypes, send_record_to_s3, archive
             import json
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)

@@ -16,6 +16,7 @@ region = PARAMS[env_name]['region']
 s3 = boto3.resource('s3', region_name=region)
 BUCKET = os.environ['S3_BUCKET']
 """
+BUCKET="s3-stellar-stream"
 
 class CErrorTypes(Enum):
     ENCRYPTION = 0

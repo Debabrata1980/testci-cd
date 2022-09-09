@@ -18,6 +18,7 @@ BUCKET = os.environ['S3_BUCKET']
 """
 
 s3_client = boto3.client("s3")
+env_name='DEV'
 
 class CErrorTypes(Enum):
     ENCRYPTION = 0

@@ -3,6 +3,10 @@ argon2-cffi-bindings==21.2.0
 asttokens==2.0.5
 atomicwrites==1.4.0
 attrs==21.4.0
+aws-cdk.cloud-assembly-schema==1.172.0
+aws-cdk.core==1.172.0
+aws-cdk.cx-api==1.172.0
+aws-cdk.region-info==1.172.0
 aws-lambda-powertools==1.26.3
 aws-sam-translator==1.48.0
 aws-xray-sdk==2.10.0

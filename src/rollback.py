@@ -16,10 +16,8 @@ region = PARAMS[env_name]['region']
 
 BUCKET = os.environ['S3_BUCKET']
 """
-env_name = "DEV"
-region= "us-west-2"
-s3 = boto3.resource('s3', region_name=region)
-BUCKET="s3-stellar-stream"
+
+s3_client = boto3.client("s3")
 
 class CErrorTypes(Enum):
     ENCRYPTION = 0
@@ -31,9 +29,10 @@ class CErrorTypes(Enum):
 
 
 def _put_to_s3(data, file_name, BUCKET=BUCKET):
+    s3 = boto3.resource('s3', region_name='us-west-2')
     s3object = s3.Object(BUCKET, file_name)
-    s3object.put(Body=(bytes(json.dumps(data).encode('UTF-8'))))
-
+    resp = s3object.put(Body=(bytes(json.dumps(data).encode('UTF-8'))))
+    return resp
 
 def error_log(data_log, file_name, BUCKET=BUCKET):  # Used to Archive the logs
     location = 'log'
@@ -45,8 +44,8 @@ def error_log(data_log, file_name, BUCKET=BUCKET):  # Used to Archive the logs
 def archive(record, record_name, BUCKET=BUCKET):  # Used to Archive the data
     location = 'archive'
     s3_location = f'{env_name}/{location}/{record_name}'
-    _put_to_s3(record, s3_location)
-    return
+    resp2 = _put_to_s3(record, s3_location)
+    return resp2
 
 
 def send_record_to_s3(data, error: CErrorTypes, file_name, BUCKET=BUCKET):

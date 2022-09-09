@@ -46,7 +46,7 @@ class MyUnitTest(unittest.TestCase):
             
 #            with open(self.FILE_LOCATION, 'r') as data:
             f=open(self.FILE_LOCATION)
-            resp = archive(json.load(f),record_name=self.S3_FILE_LOCATION_ARCH,BUCKET=self.BUCKET_NAME, )
+            resp = archive(json.load(f),record_name=self.S3_FILE_LOCATION_ARCH,BUCKET=self.BUCKET_NAME )
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             respone = resp["ResponseMetadata"]["HTTPStatusCode"]
@@ -60,8 +60,8 @@ class MyUnitTest(unittest.TestCase):
         @mock_s3
         def test_send_record_to_s3(self):
 #            from src.schema_reader_tst import _download_file
-#            from src.rollback_tst import CErrorTypes, send_record_to_s3, archive
-            from src.rollback import CErrorTypes, send_record_to_s3, archive
+            from src.rollback_tst import CErrorTypes, send_record_to_s3, archive
+#            from src.rollback import CErrorTypes, send_record_to_s3, archive
             import json
             conn = boto3.resource('s3', region_name='us-east-1')
             conn.create_bucket(Bucket=self.BUCKET_NAME)

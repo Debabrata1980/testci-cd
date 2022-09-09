@@ -28,27 +28,27 @@ class CErrorTypes(Enum):
     QUERY = 5
 
 
-def _put_to_s3(data, file_name, BUCKET=BUCKET):
+def _put_to_s3(data, file_name, BUCKET):
     s3 = boto3.resource('s3', region_name='us-west-2')
     s3object = s3.Object(BUCKET, file_name)
     resp = s3object.put(Body=(bytes(json.dumps(data).encode('UTF-8'))))
     return resp
 
-def error_log(data_log, file_name, BUCKET=BUCKET):  # Used to Archive the logs
+def error_log(data_log, file_name, BUCKET):  # Used to Archive the logs
     location = 'log'
     s3_location = f'{env_name}/{location}/{file_name}'
-    _put_to_s3(data_log, s3_location)
+    _put_to_s3(data_log, s3_location,BUCKET)
     return
 
 
-def archive(record, record_name, BUCKET=BUCKET):  # Used to Archive the data
+def archive(record, record_name, BUCKET):  # Used to Archive the data
     location = 'archive'
     s3_location = f'{env_name}/{location}/{record_name}'
-    resp2 = _put_to_s3(record, s3_location)
+    resp2 = _put_to_s3(record, s3_location,BUCKET)
     return resp2
 
 
-def send_record_to_s3(data, error: CErrorTypes, file_name, BUCKET=BUCKET):
+def send_record_to_s3(data, error: CErrorTypes,  bucket ,file_name):
     s3_folder = 'roll_back'
     if error == error.NEW_SCHEMA:
         location = f'{s3_folder}/new_schema'

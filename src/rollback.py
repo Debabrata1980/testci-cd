@@ -13,10 +13,12 @@ from IC.stack_params import PARAMS
 
 env_name = os.environ['ENV']
 region = PARAMS[env_name]['region']
-s3 = boto3.resource('s3', region_name=region)
+
 BUCKET = os.environ['S3_BUCKET']
 """
 env_name = "DEV"
+region= "us-west-2"
+s3 = boto3.resource('s3', region_name=region)
 BUCKET="s3-stellar-stream"
 
 class CErrorTypes(Enum):

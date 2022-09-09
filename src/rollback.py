@@ -8,13 +8,14 @@ import json
 from enum import Enum
 import boto3
 import os
+"""
 from IC.stack_params import PARAMS
 
 env_name = os.environ['ENV']
 region = PARAMS[env_name]['region']
 s3 = boto3.resource('s3', region_name=region)
 BUCKET = os.environ['S3_BUCKET']
-
+"""
 
 class CErrorTypes(Enum):
     ENCRYPTION = 0

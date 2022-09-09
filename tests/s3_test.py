@@ -46,7 +46,7 @@ class MyUnitTest(unittest.TestCase):
             
 #            with open(self.FILE_LOCATION, 'r') as data:
             f=open(self.FILE_LOCATION)
-            resp = archive(json.load(f),bucket=self.BUCKET_NAME, record_name=self.S3_FILE_LOCATION_ARCH)
+            resp = archive(json.load(f),record_name=self.S3_FILE_LOCATION_ARCH,bucket=self.BUCKET_NAME, )
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             respone = resp["ResponseMetadata"]["HTTPStatusCode"]
@@ -70,7 +70,7 @@ class MyUnitTest(unittest.TestCase):
             
 #            with open(self.FILE_LOCATION, 'r') as data:
             f=open(self.FILE_LOCATION)
-            resp = send_record_to_s3(data=json.load(f),error=CErrorTypes.NEW_SCHEMA,bucket=self.BUCKET_NAME, file_name=self.S3_FILE_LOCATION_NEW_SCHEMA)
+            resp = send_record_to_s3(data=json.load(f),error=CErrorTypes.NEW_SCHEMA,file_name=self.S3_FILE_LOCATION_NEW_SCHEMA,bucket=self.BUCKET_NAME)
             print(resp)
             content_length = resp["ResponseMetadata"]["HTTPHeaders"]["content-length"]
             respone = resp["ResponseMetadata"]["HTTPStatusCode"]

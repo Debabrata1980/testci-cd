@@ -5,7 +5,7 @@ from src import *
 import unittest
 import os
 from src.schema_reader_tst import  Schema 
-from IC.stack_params import PARAMS
+# from IC.stack_params import PARAMS
 import tempfile
 import json
 

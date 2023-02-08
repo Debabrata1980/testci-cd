@@ -112,7 +112,7 @@ class MyUnitTest(unittest.TestCase):
             self.assertEqual(json.load(f), data)
 
         @mock_secretsmanager
-        def test_db_conn():
+        def test_db_conn(self):
             from src.db_conn import  db_conn 
             conn = boto3.client("secretsmanager", region_name="us-west-2")
             conn.create_secret(Name=DEFAULT_SECRET_NAME, SecretString="teststring")

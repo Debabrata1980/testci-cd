@@ -119,6 +119,7 @@ class MyUnitTest(unittest.TestCase):
             # result = conn.get_secret_value(SecretId=DEFAULT_SECRET_NAME)
             # assert result["SecretString"] == "foosecret"
             db_conn_result = db_conn(conn,self.DEFAULT_SECRET_NAME)
+            print(db_conn_result)
             assert db_conn_result["SecretString"] == "teststring"
             
            

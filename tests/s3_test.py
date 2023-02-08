@@ -116,7 +116,7 @@ class MyUnitTest(unittest.TestCase):
             from src.db_conn import  db_conn 
             conn = boto3.client("secretsmanager", region_name="us-west-2")
             conn.create_secret(Name=self.DEFAULT_SECRET_NAME, SecretString="teststring")
-            result = conn.get_secret_value(SecretId=DEFAULT_SECRET_NAME)
+            result = conn.get_secret_value(SecretId=self.DEFAULT_SECRET_NAME)
             # assert result["SecretString"] == "foosecret"
             db_conn_result = db_conn(conn,self.DEFAULT_SECRET_NAME)
             print(result)

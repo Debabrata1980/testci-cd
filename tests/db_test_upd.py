@@ -23,10 +23,10 @@ class TestDB(unittest.TestCase):
    def test_foobar(self):
    
         trans = self.connection.begin()
-        self.connection.execute("CREATE TABLE accounts (age VARCHAR ( 50 ),name VARCHAR ( 50 ));")
-        self.connection.execute("INSERT INTO accounts (age,name) values('22','deb')")
+        self.connection.execute(text("CREATE TABLE accounts (age VARCHAR ( 50 ),name VARCHAR ( 50 ));"))
+        self.connection.execute(text("INSERT INTO accounts (age,name) values('22','deb')"))
         trans.commit()
-        result = list(self.connection.execute("select age from accounts "))
+        result = list(self.connection.execute(text("select age from accounts ")))
 #        assert result == [(1,), (22,)]
         assert result == [('22',)]
 

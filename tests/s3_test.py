@@ -1,5 +1,5 @@
 import boto3
-from moto import mock_s3
+from moto import mock_s3,mock_secretsmanager
 from src.mymodule import MyModel
 from src import *
 import unittest
@@ -23,6 +23,7 @@ class MyUnitTest(unittest.TestCase):
         S3_FILE_LOCATION_ARCH = f'{PATH_ARCH}/{FILE_NAME}'
         S3_FILE_LOCATION_NEW_SCHEMA = f'{PATH_NEW_SCHEMA}/{FILE_NAME}'
         FILE_LOCATION_DOWNLOAD = f'{PATH_DOWNLOAD}/{FILE_NAME}'
+        DEFAULT_SECRET_NAME = "test-secret"
         
         @mock_s3
         def test_my_model_save(self):
@@ -110,6 +111,16 @@ class MyUnitTest(unittest.TestCase):
             f=open(self.FILE_LOCATION)
             self.assertEqual(json.load(f), data)
 
+        @mock_secretsmanager
+        def test_db_conn():
+            from src.db_conn import  db_conn 
+            conn = boto3.client("secretsmanager", region_name="us-west-2")
+            conn.create_secret(Name=DEFAULT_SECRET_NAME, SecretString="teststring")
+            # result = conn.get_secret_value(SecretId=DEFAULT_SECRET_NAME)
+            # assert result["SecretString"] == "foosecret"
+            db_conn_result = db_conn(conn,DEFAULT_SECRET_NAME)
+            assert db_conn_result["SecretString"] == "teststring"
+            
            
 if __name__ == '__main__':
     unittest.main()            
